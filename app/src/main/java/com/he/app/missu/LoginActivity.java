@@ -94,7 +94,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
            //         RegisterActivity.class);
             //startActivity(intent);
         } else {
-            boolean isNetConnected = true;//CommonUtils.isNetworkAvailable(this); // TODO.
+            boolean isNetConnected = CommonUtils.isNetworkAvailable(this); // TODO.
             if(!isNetConnected){
                 ShowToast(R.string.network_tips);
                 return;

@@ -7,16 +7,16 @@ import android.net.NetworkInfo;
 public class CommonUtils {
 
 	/** ����Ƿ������� */
-/*	public static boolean isNetworkAvailable(Context context) {
+	public static boolean isNetworkAvailable(Context context) {
 		NetworkInfo info = getNetworkInfo(context);
 		if (info != null) {
 			return info.isAvailable();
 		}
 		return false;
 	}
-*/
+
 	/** ����Ƿ���WIFI */
-/*	public static boolean isWifi(Context context) {
+	public static boolean isWifi(Context context) {
 		NetworkInfo info = getNetworkInfo(context);
 		if (info != null) {
 			if (info.getType() == ConnectivityManager.TYPE_WIFI)
@@ -24,9 +24,9 @@ public class CommonUtils {
 		}
 		return false;
 	}
-*/
+
 	/** ����Ƿ����ƶ����� */
-/*	public static boolean isMobile(Context context) {
+	public static boolean isMobile(Context context) {
 		NetworkInfo info = getNetworkInfo(context);
 		if (info != null) {
 			if (info.getType() == ConnectivityManager.TYPE_MOBILE)
@@ -34,13 +34,13 @@ public class CommonUtils {
 		}
 		return false;
 	}
-*/
-	/*private static NetworkInfo getNetworkInfo(Context context) {
+
+	private static NetworkInfo getNetworkInfo(Context context) {
 
 		ConnectivityManager cm = (ConnectivityManager) context
 				.getSystemService(Context.CONNECTIVITY_SERVICE);
 		return cm.getActiveNetworkInfo();
-	}*/
+	}
 
 	/** ���SD���Ƿ���� */
 	public static boolean checkSdCard() {
