@@ -90,9 +90,9 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
     @Override
     public void onClick(View v) {
         if (v == btn_register) {
-           // Intent intent = new Intent(LoginActivity.this,
-           //         RegisterActivity.class);
-            //startActivity(intent);
+            Intent intent = new Intent(LoginActivity.this,
+               RegisterActivity.class);
+            startActivity(intent);
         } else {
             boolean isNetConnected = CommonUtils.isNetworkAvailable(this); // TODO.
             if(!isNetConnected){

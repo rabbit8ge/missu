@@ -11,6 +11,7 @@ import com.he.app.missu.user.BmobInterface;
 import com.he.app.missu.user.UserManager;
 import com.he.app.tools.BaseActivity;
 
+import cn.bmob.im.BmobChat;
 import cn.bmob.im.BmobUserManager;
 import cn.bmob.v3.Bmob;
 
@@ -40,6 +41,7 @@ public class SplashActivity extends BaseActivity {
 
         // Initialize bmob.
         Bmob.initialize(this, BmobInterface.mApplicationID);
+       // BmobChat.getInstance(this).init(BmobInterface.mApplicationID);
 
         // Check state to jump to different activity.
         BmobUserManager um = UserManager.getInstance();
@@ -48,6 +50,7 @@ public class SplashActivity extends BaseActivity {
         } else {
             mHandler.sendEmptyMessageAtTime(MSG_GO_HOME, 2000);
         }
+        finish();
     }
 
     @Override
@@ -70,5 +73,10 @@ public class SplashActivity extends BaseActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }
