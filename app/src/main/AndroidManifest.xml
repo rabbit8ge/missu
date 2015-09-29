@@ -1,20 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.he.app.missu" >
+    package="com.bmob.im.demo"
+    android:versionCode="15"
+    android:versionName="1.1.5" >
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="ANDROID.PERMISSION.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="ANDROID.PERMISSION.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="ANDROID.PERMISSION.READ_PHONE_STATE" />
-    <uses-permission android:name="ANDROID.PERMISSION.READ_CONTACTS" />
-    <uses-permission android:name="ANDROID.PERMISSION.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="ANDROID.PERMISSION.READ_LOGS" />
-
-    <permission android:name="cn.bmob.permission.push"
-        android:protectionLevel="normal">
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="14" />
+    
+     <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="false"
+        android:resizeable="true"
+        android:smallScreens="true" />
+     
+    <!-- normal permission -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 允许应用打开网络套接口 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <!-- Push SDK权限 -->
+    <permission
+        android:name="cn.bmob.permission.push"
+        android:protectionLevel="normal" >
     </permission>
+    <uses-permission android:name="cn.bmob.permission.push" /> <!-- 添加自定义的权限 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
-    // Not settled.
     <!-- UIL框架所需的权限 -->
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <!-- 通知震动权限 -->
@@ -51,28 +65,28 @@
     <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" >
     </uses-permission>
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
-
+    
     <!-- 这个权限用于进行网络定位-->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
-    <!-- 这个权限用于访问GPS定位-->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
-    <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位-->
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
-    <!-- 获取运营商信息，用于支持提供运营商信息相关的接口-->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
-    <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission>
-    <!-- 用于读取手机当前的状态-->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
-    // End of not settled.
-
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
+	<!-- 这个权限用于访问GPS定位-->
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+	<!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位-->
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+	<!-- 获取运营商信息，用于支持提供运营商信息相关的接口-->
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+	<!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
+	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission>
+	<!-- 用于读取手机当前的状态-->
+	<uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+     <!-- baidumap 所需的权限 -end -->
     <application
+        android:name="com.bmob.im.demo.CustomApplcation"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".SplashActivity"
+            android:name="com.bmob.im.demo.ui.SplashActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -81,14 +95,89 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
-            android:label="@string/title_activity_main" >
-        </activity>
+            android:name="com.bmob.im.demo.ui.MainActivity"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+        
+        <activity android:name=".ui.LoginActivity" />
+        
+        <activity android:name=".ui.LocationActivity" />
+        
+        <activity android:name=".ui.BlackListActivity" />
+        
+        <activity android:name=".ui.ImageBrowserActivity" />
+        
         <activity
-            android:name=".LoginActivity"
-            android:label="@string/title_activity_login"
-            android:windowSoftInputMode="adjustResize|stateHidden" >
-        </activity>
+            android:name="com.bmob.im.demo.ui.AddFriendActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        
+        <activity android:name="com.bmob.im.demo.ui.NewFriendActivity" />
+        <activity android:name="com.bmob.im.demo.ui.NearPeopleActivity" />
+        
+        <activity android:name="com.bmob.im.demo.ui.UpdateInfoActivity" />
+        
+        <activity
+            android:name="com.bmob.im.demo.ui.ChatActivity"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+        
+        <activity android:name="com.bmob.im.demo.ui.SetMyInfoActivity" />
+        
+        <activity
+            android:name="com.bmob.im.demo.ui.RegisterActivity"
+            android:label="@string/app_name" />
+
+        <!-- baidu map-->
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="hfyMtrWcv6qTQyvwgtusaYGE" />
+        
+         <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" >
+            <intent-filter>
+                <action android:name="com.baidu.location.service_v2.2" >
+                </action>
+            </intent-filter>
+        </service>
+  
+         <!-- IM聊天所需的Push start-->
+        <service
+            android:name="cn.bmob.push.lib.service.PushService"
+            android:exported="true"
+            android:label="PushService"
+            android:permission="cn.bmob.permission.push"
+            android:process="cn.bmob.push" >
+            <intent-filter>
+                <action android:name="cn.bmob.push.lib.service.PushService" />
+            </intent-filter>
+        </service>
+
+        <receiver android:name="cn.bmob.push.PushReceiver" >
+            <intent-filter android:priority="2147483647" > <!-- 优先级加最高 -->
+                <!-- 系统启动完成后会调用 -->
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <!-- 解锁完成后会调用 -->
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <!-- 监听网络连通性 -->
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".MyMessageReceiver" >
+            <intent-filter>
+                <action android:name="cn.bmob.push.action.MESSAGE" />
+            </intent-filter>
+        </receiver>
+
+        <!-- IM聊天所需的Push end-->
+        
+        <!-- 启动定时检测操作 -->
+         <service android:name="cn.bmob.im.poll.BmobPollService">
+            <intent-filter>
+                <action android:name="cn.bmob.im.service.BmobPollService"/>
+            </intent-filter>
+        </service>
+        
     </application>
 
 </manifest>
